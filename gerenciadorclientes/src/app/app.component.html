@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon" >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>group</mat-icon>
+      <span>Clientes</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>inventory_2</mat-icon>
+      <span>Produtos</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>featured_play_list</mat-icon>
+      <span>Lançamentos</span>
+    </button>
+  </mat-menu>
+  <span>Gerenciador Clientaaes</span>
+</mat-toolbar>
