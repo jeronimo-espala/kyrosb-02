@@ -8,10 +8,12 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClienteFormComponent } from './modules/cliente/components/cliente-form/cliente-form/cliente-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ClienteFormComponent
   ],
   imports: [
     BrowserModule,
