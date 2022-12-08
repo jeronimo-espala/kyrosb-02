@@ -5,6 +5,7 @@ import com.service.springrest.repository.ProdutoRepository;
 import com.service.springrest.service.ProdutoService;
 import com.service.springrest.service.dto.ProdutoDTO;
 import com.service.springrest.service.error.ClienteNaoEncontradoException;
+import com.service.springrest.service.error.ProdutoNaoEncontradoException;
 import com.service.springrest.service.mapper.ProdutoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public ProdutoDTO getById(Long id) {
-        Produto produtos = produtoRepository.findById(id).orElseThrow(ClienteNaoEncontradoException::new);
+        Produto produtos = produtoRepository.findById(id).orElseThrow(ProdutoNaoEncontradoException::new);
         return produtoMapper.toDto(produtos);
     }
 
