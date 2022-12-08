@@ -12,13 +12,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ClienteDTO implements Serializable {
+public class ProdutoDTO implements Serializable {
 
     private Long id;
     private String nome;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate dataNasc;
-    private String endereco;
-    private String cpfCnpj;
-    private TipoPessoaEnum tipoPessoa;
+    private String descricao;
+    private String status;
+    private Long valorUnidade;
 }

@@ -1,4 +1,4 @@
-package com.service.springrest.model;
+package com.service.springrest.model.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
