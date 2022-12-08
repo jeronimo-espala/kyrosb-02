@@ -7,10 +7,12 @@ import java.util.List;
 
 public interface ClienteService {
 
-    Cliente save (Cliente cliente);
+    ClienteDTO save (ClienteDTO clienteDTO);
 
-    List<Cliente> obterTodos();
+    List<ClienteDTO> getAll();
 
-    Cliente obterPorId(Long id);
+    ClienteDTO getById(Long id);
+
+    void delete(Long id);
 
 }
