@@ -3,7 +3,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="goToClienteForm()">
       <mat-icon>group</mat-icon>
       <span>Clientes</span>
     </button>
@@ -18,3 +18,4 @@
   </mat-menu>
   <span>Gerenciador Clientes</span>
 </mat-toolbar>
+<router-outlet></router-outlet>
