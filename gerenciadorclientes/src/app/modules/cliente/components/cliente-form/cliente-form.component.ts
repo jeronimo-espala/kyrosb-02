@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ClienteService } from '../../services/cliente.service';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { ClienteForm2Component } from '../cliente-form2/cliente-form2.component';
 
 export interface PeriodicElement {
   name: string;
@@ -31,19 +33,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ClienteFormComponent implements OnInit {
 
-  dataTable: ClienteModel[] = [];
-  displayedColumns: string[] = ['id', 'nome', 'dataNasc', 'endereco', 'cpfCnpj', 'tipoPessoa'];
-  dataSource: ClienteModel[] = [];
+  displayedColumns: string[] = ['select', 'id', 'nome', 'dataNasc', 'endereco', 'cpfCnpj', 'tipoPessoa', 'actions'];
+  dataSource = new MatTableDataSource<ClienteModel>();
   selection = new SelectionModel<ClienteModel>(true, []);
 
   constructor(
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private dialog: MatDialog
   ) {
 
   }
-  
+
   ngOnInit(): void {
     this.inicarTela();
+  }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ClienteForm2Component, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 
 
@@ -53,30 +63,32 @@ export class ClienteFormComponent implements OnInit {
 
   private carregarTabela() {
     this.clienteService.getAll().subscribe(
-      (res) => this.dataSource = res
+      (res) => {
+        this.dataSource.data = res;
+      }
     );
   }
 
-  // isAllSelected() {
-  //   const numSelected = this.selection.selected.length;
-  //   const numRows = this.dataSource.data.length;
-  //   return numSelected === numRows;
-  // }
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
 
-  // toggleAllRows() {
-  //   if (this.isAllSelected()) {
-  //     this.selection.clear();
-  //     return;
-  //   }
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
 
-  //   this.selection.select(...this.dataSource.data);
-  // }
+    this.selection.select(...this.dataSource.data);
+  }
 
-  // checkboxLabel(row?: ClienteModel): string {
-  //   if (!row) {
-  //     return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-  //   }
-  //   return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
-  // }
+  checkboxLabel(row?: ClienteModel): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
 
 }

@@ -5,15 +5,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClienteRoutingModule } from './cliente-routing.module';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ClienteForm2Component } from './components/cliente-form2/cliente-form2.component';
 
 
 @NgModule({
-  declarations: [ClienteFormComponent],
+  declarations: [ClienteFormComponent, ClienteForm2Component],
   imports: [
     CommonModule,
     ClienteRoutingModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class ClienteModule { }
