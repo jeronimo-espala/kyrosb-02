@@ -1,5 +1,4 @@
 import { AppRoutingModule } from './app-routing.module';
-import { ClienteFormComponent } from './modules/cliente/components/cliente-form/cliente-form.component';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';

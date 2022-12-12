@@ -1,79 +1,52 @@
-<div class="demo-button-container">
-  <button mat-raised-button class="demo-button"
-    (click)="openDialog('0ms', '0ms')">
-    Add data
-  </button>
-  <button
-      mat-raised-button
-      class="demo-button">
-    Remove data
-  </button>
-</div>
+<form class="example-form">
+  <div mat-dialog-content>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <!-- Checkbox Column -->
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                    [aria-label]="checkboxLabel()">
-      </mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)"
-                    [aria-label]="checkboxLabel(row)">
-      </mat-checkbox>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label> Nome </mat-label>
+          <input matInput>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <mat-label></mat-label>
+          <input matInput>
+        </mat-form-field>
     </td>
-  </ng-container>
+    </tr>
+  </table>
 
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
+    <p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Address 2</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </p>
 
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-  </ng-container>
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>City</mat-label>
+        <input matInput placeholder="Ex. San Francisco">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>State</mat-label>
+        <input matInput placeholder="Ex. California">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Postal Code</mat-label>
+        <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+  </div>
 
-  <ng-container matColumnDef="dataNasc">
-    <th mat-header-cell *matHeaderCellDef> Data Nascimento </th>
-    <td mat-cell *matCellDef="let element"> {{element.dataNasc | date: 'longDate'}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="endereco">
-    <th mat-header-cell *matHeaderCellDef> Endereço </th>
-    <td mat-cell *matCellDef="let element"> {{element.endereco}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="cpfCnpj">
-    <th mat-header-cell *matHeaderCellDef> CPF/CNPJ </th>
-    <td mat-cell *matCellDef="let element"> {{element.cpfCnpj}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="tipoPessoa">
-    <th mat-header-cell *matHeaderCellDef> Tipo Pessoa </th>
-    <td mat-cell *matCellDef="let element"> {{element.tipoPessoa}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-mini-fab matTooltip="Primary" color="primary" aria-label="Example mini fab with a heart icon">
-        <mat-icon>remove</mat-icon>
-      </button>
-      <button mat-mini-fab matTooltip="Primary" color="primary" aria-label="Example mini fab with a heart icon">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-      (click)="selection.toggle(row)">
-  </tr>
-</table>
+  <div mat-dialog-actions>
+    <button mat-button >No Thanks</button>
+    <button mat-button >Ok</button>
+  </div>
+</form>
